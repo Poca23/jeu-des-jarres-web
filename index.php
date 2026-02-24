@@ -1,11 +1,11 @@
 <?php
-session_start();
-
 if (isset($_GET['reset'])) {
     session_destroy();
     header('Location: index.php');
     exit;
 }
+
+session_start();
 
 if (!isset($_SESSION['level'])) {
     $_SESSION['level'] = 1;
