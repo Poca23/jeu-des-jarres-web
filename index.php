@@ -4,9 +4,9 @@ if (isset($_GET['reset'])) {
     header('Location: index.php');
     exit;
 }
+
 session_start();
 
-// Initialisation
 if (!isset($_SESSION['level'])) {
     $_SESSION['level'] = 1;
     $_SESSION['scores'] = ['1' => null, '2' => null, '3' => null];
@@ -16,7 +16,6 @@ if (!isset($_SESSION['level'])) {
 
 $level = $_SESSION['level'];
 
-// Bon niveau
 if ($level === 'end') {
     require 'end.php';
 } else {
