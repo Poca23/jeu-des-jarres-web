@@ -5,7 +5,7 @@ $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Difficulté
+    // Choix de la difficulté
     if (isset($_POST['difficulte'])) {
         $d = $_POST['difficulte'];
         if (is_numeric($d) && $d >= 1 && $d <= 3) {
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Jarre
+    // Choix d'une jarre
     elseif (isset($_POST['jarre']) && isset($_SESSION['difficulte'])) {
         $choix = $_POST['jarre'];
 
@@ -60,38 +60,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
     <?php else: ?>
-        <p>Difficulté :
-            <?= $_SESSION['difficulte'] ?> serpent(s)
-        </p>
+        <p>Difficulté : <?= $_SESSION['difficulte'] ?> serpent(s)</p>
 
         <?php if ($message): ?>
-            <p class="message">
-                <?= $message ?>
-            </p>
+            <p class="message"><?= $message ?></p>
         <?php endif; ?>
 
         <form method="POST">
             <?php for ($i = 1; $i <= 5; $i++): ?>
-                <button name="jarre" value="<?= $i ?>">Jarre
-                    <?= $i ?>
-                </button>
+                <button name="jarre" value="<?= $i ?>">Jarre <?= $i ?></button>
             <?php endfor; ?>
         </form>
     <?php endif; ?>
 
     <div class="scores">
-        <p>Essais :
-            <?= $_SESSION['essais'] ?>
-        </p>
-        <p>Niveau 1 :
-            <?= $_SESSION['scores']['1'] ?? 'pas encore joué' ?> essais
-        </p>
-        <p>Niveau 2 :
-            <?= $_SESSION['scores']['2'] ?? 'pas encore joué' ?> essais
-        </p>
-        <p>Niveau 3 :
-            <?= $_SESSION['scores']['3'] ?? 'pas encore joué' ?>
-        </p>
+        <p>Essais : <?= $_SESSION['essais'] ?></p>
+        <p>Niveau 1 : <?= $_SESSION['scores']['1'] ?? 'pas encore joué' ?> essais</p>
+        <p>Niveau 2 : <?= $_SESSION['scores']['2'] ?? 'pas encore joué' ?> essais</p>
+        <p>Niveau 3 : <?= $_SESSION['scores']['3'] ?? 'pas encore joué' ?></p>
     </div>
 </body>
 
